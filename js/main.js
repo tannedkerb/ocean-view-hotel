@@ -191,7 +191,12 @@
 
   /* ---------------- REVEAL + COUNTERS ---------------- */
   const io = new IntersectionObserver((es) => es.forEach((e) => {
-    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    if (e.isIntersecting) {
+      const el = e.target;
+      el.classList.add("in"); io.unobserve(el);
+      // the stagger delay is only for the appear animation; drop it so hover effects react instantly
+      if (el.style.transitionDelay) setTimeout(() => { el.style.transitionDelay = ""; }, 1400);
+    }
   }), { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
   function observeReveal() { $$(".reveal:not(.in)").forEach((el) => io.observe(el)); }
   const cio = new IntersectionObserver((es) => es.forEach((e) => {
