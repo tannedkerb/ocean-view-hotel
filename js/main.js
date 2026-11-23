@@ -33,6 +33,7 @@
     renderRooms(); renderDining(); renderExperiences(); renderPackages();
     renderReviews(); renderFaq(); renderContacts(); fillBookingSelects(); calcBooking();
     observeReveal();
+    if (typeof measure === "function" && secTops) requestAnimationFrame(measure);
   }
 
   /* ---------------- ROOMS ---------------- */
@@ -163,20 +164,36 @@
   /* ---------------- SCROLL: header, progress, depth ---------------- */
   const header = $("#header"), progress = $("#scrollProgress"), toTop = $("#toTop"), heroBg = $(".hero__bg");
   const depth = $("#depth"), depthVal = $("#depthVal"), depthFill = $("#depthFill");
-  function onScroll() {
-    const y = scrollY, h = document.documentElement.scrollHeight - innerHeight, p = h > 0 ? y / h : 0;
+  // Layout values are measured once (and on resize), not on every scroll event,
+  // and all DOM writes happen once per frame inside requestAnimationFrame: this keeps scrolling smooth.
+  const sections = $$("section[id]"), navLinks = $$(".nav a");
+  let secTops = [], docH = 1, ticking = false, lastCur = null;
+  function measure() {
+    secTops = sections.map((s) => [s.id, s.getBoundingClientRect().top + scrollY]);
+    docH = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+  }
+  function update() {
+    ticking = false;
+    const y = scrollY, p = Math.min(1, y / docH);
     header.classList.toggle("scrolled", y > 40);
-    progress.style.width = p * 100 + "%";
+    progress.style.transform = `scaleX(${p})`;
     toTop.classList.toggle("show", y > 800);
     depth.classList.toggle("show", y > innerHeight * 0.6);
     depthVal.textContent = (p * 12).toFixed(1);
-    depthFill.style.height = p * 100 + "%";
-    if (y < innerHeight) heroBg.style.transform = `translateY(${y * 0.3}px)`;
+    depthFill.style.transform = `scaleY(${p})`;
+    if (y < innerHeight * 1.2) heroBg.style.transform = `translate3d(0,${(y * 0.3).toFixed(1)}px,0)`;
     let cur = "";
-    $$("section[id]").forEach((s) => { if (y + 140 >= s.offsetTop) cur = s.id; });
-    $$(".nav a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + cur));
+    for (const [id, top] of secTops) if (y + 140 >= top) cur = id;
+    if (cur !== lastCur) {
+      lastCur = cur;
+      navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + cur));
+    }
   }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
   addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", () => { measure(); onScroll(); });
+  addEventListener("load", () => { measure(); onScroll(); });
+  measure();
   toTop.addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
 
   const burger = $("#burger"), nav = $("#nav");
