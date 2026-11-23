@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#04131f" />
+  <title>Ocean View Hotel — Azerbaijan</title>
+  <meta name="description" content="Ocean View Hotel — Azərbaycanın ilk su altı oteli. Xəzər dənizi, su altı nömrələr və restoran." />
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="is-loading">
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <div class="preloader__port">
+        <img src="img/logo.svg" alt="" />
+        <span class="preloader__water"></span>
+      </div>
+      <div class="preloader__word">OCEAN VIEW</div>
+      <div class="preloader__sub">HOTEL · AZERBAIJAN</div>
+    </div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- DEPTH GAUGE -->
+  <div class="depth" id="depth" aria-hidden="true">
+    <div class="depth__track"><i id="depthFill"></i></div>
+    <div class="depth__val"><b id="depthVal">0</b> m<span data-i18n="depth"></span></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__row">
+      <a href="#home" class="brand">
+        <img src="img/logo.svg" alt="Ocean View Hotel" class="brand__logo" />
+        <span class="brand__text">
+          <span class="brand__name">Ocean View</span>
+          <span class="brand__tag">Hotel · Azerbaijan</span>
+        </span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#about" data-i18n="nav.about"></a>
+        <a href="#levels" data-i18n="nav.levels"></a>
+        <a href="#rooms" data-i18n="nav.rooms"></a>
+        <a href="#dining" data-i18n="nav.dining"></a>
+        <a href="#experiences" data-i18n="nav.exp"></a>
+        <a href="#packages" data-i18n="nav.packages"></a>
+        <a href="#gallery" data-i18n="nav.gallery"></a>
+        <a href="#contact" data-i18n="nav.contact"></a>
+      </nav>
+      <div class="header__actions">
+        <div class="lang" id="lang">
+          <button data-lang="az">AZ</button>
+          <button data-lang="ru">RU</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <button class="btn btn--aqua btn--sm js-book" data-i18n="btn.book"></button>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero__bg"><img src="img/suite-underwater.jpg" alt="Underwater suite" /></div>
+    <div class="hero__caustics"></div>
+    <div class="hero__shade"></div>
+    <canvas class="hero__bubbles" id="bubbles"></canvas>
+    <div class="container hero__content">
+      <p class="kicker hero__kicker" data-i18n="hero.kicker"></p>
+      <h1 class="hero__title">
+        <span class="line"><span data-i18n="hero.title1"></span></span>
+        <span class="line"><em data-i18n="hero.title2"></em></span>
+      </h1>
+      <p class="hero__sub" data-i18n="hero.sub"></p>
+      <div class="hero__cta">
+        <a href="#levels" class="btn btn--outline" data-i18n="btn.dive"></a>
+        <button class="btn btn--aqua js-book" data-i18n="btn.book"></button>
+      </div>
+      <form class="quick" id="quickForm">
+        <label class="quick__field"><span data-i18n="q.checkin"></span><input type="date" id="qIn" required /></label>
+        <label class="quick__field"><span data-i18n="q.checkout"></span><input type="date" id="qOut" required /></label>
+        <label class="quick__field"><span data-i18n="q.guests"></span>
+          <select id="qGuests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+        </label>
+        <button class="btn btn--aqua" type="submit" data-i18n="q.find"></button>
+      </form>
+    </div>
+    <svg class="hero__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+      <path class="w1" d="M0,64 C240,110 480,10 720,50 C960,90 1200,20 1440,60 L1440,120 L0,120 Z"/>
+      <path class="w2" d="M0,80 C260,40 520,120 760,80 C1000,40 1220,100 1440,70 L1440,120 L0,120 Z"/>
+    </svg>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <div class="container about__grid">
+      <div class="about__text">
+        <p class="kicker reveal" data-i18n="about.kicker"></p>
+        <h2 class="title reveal" data-i18n="about.title"></h2>
+        <p class="lead reveal" data-i18n="about.p1"></p>
+        <p class="reveal" data-i18n="about.p2"></p>
+        <div class="stats reveal">
+          <div class="stat"><b data-count="40">0</b><span data-i18n="stat.rooms"></span></div>
+          <div class="stat"><b data-count="20">0</b><span data-i18n="stat.under"></span></div>
+          <div class="stat"><b data-count="8">0</b><span data-i18n="stat.depth"></span></div>
+          <div class="stat"><b data-count="2">0</b><span data-i18n="stat.rest"></span></div>
+        </div>
+      </div>
+      <div class="about__media reveal">
+        <div class="porthole"><img src="img/pool.jpg" alt="" /></div>
+        <div class="porthole porthole--sm"><img src="img/room-underwater.jpg" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVELS: ABOVE / BELOW -->
+  <section class="section levels" id="levels">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="lv.kicker"></p>
+        <h2 class="title reveal" data-i18n="lv.title"></h2>
+      </div>
+      <div class="switch reveal" id="lvSwitch">
+        <button class="active" data-lv="above">☀ <span data-i18n="lv.above"></span></button>
+        <button data-lv="below">🌊 <span data-i18n="lv.below"></span></button>
+        <i class="switch__pill"></i>
+      </div>
+      <div class="lv reveal" id="lv" data-state="above">
+        <div class="lv__pane lv__pane--above">
+          <p class="lv__desc" data-i18n="lv.above.d"></p>
+          <div class="lv__grid">
+            <figure><img src="img/lobby.jpg" alt="" loading="lazy" /><figcaption data-i18n="lv.a1"></figcaption></figure>
+            <figure><img src="img/pool.jpg" alt="" loading="lazy" /><figcaption data-i18n="lv.a2"></figcaption></figure>
+            <figure><img src="img/terrace-wedding.jpg" alt="" loading="lazy" /><figcaption data-i18n="lv.a3"></figcaption></figure>
+          </div>
+        </div>
+        <div class="lv__pane lv__pane--below">
+          <p class="lv__desc" data-i18n="lv.below.d"></p>
+          <div class="lv__grid">
+            <figure><img src="img/room-underwater.jpg" alt="" loading="lazy" /><figcaption data-i18n="lv.b1"></figcaption></figure>
+            <figure><img src="img/restaurant-tunnel.jpg" alt="" loading="lazy" /><figcaption data-i18n="lv.b2"></figcaption></figure>
+            <figure><img src="img/restaurant-hall.jpg" alt="" loading="lazy" /><figcaption data-i18n="lv.b3"></figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOMS -->
+  <section class="section rooms" id="rooms">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="rooms.kicker"></p>
+        <h2 class="title reveal" data-i18n="rooms.title"></h2>
+      </div>
+      <div class="room-grid" id="roomGrid"></div>
+    </div>
+  </section>
+
+  <!-- DINING -->
+  <section class="section dining" id="dining">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="din.kicker"></p>
+        <h2 class="title reveal" data-i18n="din.title"></h2>
+      </div>
+      <div id="dinList"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCES -->
+  <section class="section experiences" id="experiences">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="exp.kicker"></p>
+        <h2 class="title reveal" data-i18n="exp.title"></h2>
+      </div>
+      <div class="exp-grid" id="expGrid"></div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section packages" id="packages">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="pk.kicker"></p>
+        <h2 class="title reveal" data-i18n="pk.title"></h2>
+      </div>
+      <div class="pk-grid" id="pkGrid"></div>
+    </div>
+  </section>
+
+  <!-- LOCATION + ECO -->
+  <section class="section location" id="location">
+    <div class="container loc__grid">
+      <div class="loc__media reveal"><img src="img/caspian.jpg" alt="Caspian Sea" loading="lazy" /></div>
+      <div>
+        <p class="kicker reveal" data-i18n="loc.kicker"></p>
+        <h2 class="title reveal" data-i18n="loc.title"></h2>
+        <p class="lead reveal" data-i18n="loc.p"></p>
+        <ul class="loc__list reveal">
+          <li>✈ <span data-i18n="loc.l1"></span></li>
+          <li>🏰 <span data-i18n="loc.l2"></span></li>
+          <li>🗿 <span data-i18n="loc.l3"></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container eco">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="eco.kicker"></p>
+        <h2 class="title reveal" data-i18n="eco.title"></h2>
+      </div>
+      <div class="eco-grid">
+        <div class="eco-card reveal"><span>💧</span><h4 data-i18n="eco.1"></h4><p data-i18n="eco.1d"></p></div>
+        <div class="eco-card reveal"><span>🐟</span><h4 data-i18n="eco.2"></h4><p data-i18n="eco.2d"></p></div>
+        <div class="eco-card reveal"><span>⚡</span><h4 data-i18n="eco.3"></h4><p data-i18n="eco.3d"></p></div>
+        <div class="eco-card reveal"><span>🛟</span><h4 data-i18n="eco.4"></h4><p data-i18n="eco.4d"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section gallery" id="gallery">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="gal.kicker"></p>
+        <h2 class="title reveal" data-i18n="gal.title"></h2>
+      </div>
+      <div class="masonry" id="masonry">
+        <a href="img/suite-underwater.jpg" class="m-item m-wide reveal"><img src="img/suite-underwater.jpg" alt="" loading="lazy" /></a>
+        <a href="img/diving.jpg" class="m-item reveal"><img src="img/diving.jpg" alt="" loading="lazy" /></a>
+        <a href="img/restaurant-tunnel.jpg" class="m-item reveal"><img src="img/restaurant-tunnel.jpg" alt="" loading="lazy" /></a>
+        <a href="img/villa-spa.jpg" class="m-item m-tall reveal"><img src="img/villa-spa.jpg" alt="" loading="lazy" /></a>
+        <a href="img/terrace-wedding.jpg" class="m-item m-wide reveal"><img src="img/terrace-wedding.jpg" alt="" loading="lazy" /></a>
+        <a href="img/room-underwater.jpg" class="m-item reveal"><img src="img/room-underwater.jpg" alt="" loading="lazy" /></a>
+        <a href="img/restaurant-hall.jpg" class="m-item m-wide reveal"><img src="img/restaurant-hall.jpg" alt="" loading="lazy" /></a>
+        <a href="img/lobby.jpg" class="m-item reveal"><img src="img/lobby.jpg" alt="" loading="lazy" /></a>
+        <a href="img/gallery-dark.jpg" class="m-item reveal"><img src="img/gallery-dark.jpg" alt="" loading="lazy" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews" id="reviews">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="rev.kicker"></p>
+        <h2 class="title reveal" data-i18n="rev.title"></h2>
+      </div>
+      <div class="slider reveal" id="slider">
+        <div class="slider__track" id="sliderTrack"></div>
+        <div class="slider__nav">
+          <button class="slider__btn" id="prevRev" aria-label="Prev">‹</button>
+          <div class="slider__dots" id="sliderDots"></div>
+          <button class="slider__btn" id="nextRev" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <div class="container faq__wrap">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="faq.kicker"></p>
+        <h2 class="title reveal" data-i18n="faq.title"></h2>
+      </div>
+      <div class="accordion" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section contact" id="contact">
+    <div class="container contact__grid">
+      <div>
+        <p class="kicker reveal" data-i18n="contact.kicker"></p>
+        <h2 class="title reveal" data-i18n="contact.title"></h2>
+        <ul class="contact__list reveal">
+          <li><span data-i18n="contact.address"></span><b id="cAddress"></b></li>
+          <li><span data-i18n="contact.phone"></span><b><a id="cPhone" href="#"></a></b></li>
+          <li><span data-i18n="contact.email"></span><b><a id="cEmail" href="#"></a></b></li>
+          <li><span data-i18n="contact.hours"></span><b data-i18n="contact.hours.v"></b></li>
+        </ul>
+        <div class="contact__btns reveal">
+          <a class="btn btn--outline js-wa" target="_blank" rel="noopener" data-i18n="contact.write"></a>
+          <button class="btn btn--aqua js-book" data-i18n="btn.book"></button>
+        </div>
+        <div class="socials reveal" id="socials"></div>
+      </div>
+      <div class="contact__map reveal"><iframe id="map" title="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__row">
+      <div class="footer__brand">
+        <img src="img/logo.svg" alt="" />
+        <div>
+          <div class="brand__name">Ocean View Hotel</div>
+          <p data-i18n="footer.text"></p>
+        </div>
+      </div>
+      <p class="footer__copy">© <span id="year"></span> Ocean View Hotel. <span data-i18n="footer.rights"></span></p>
+    </div>
+  </footer>
+
+  <a class="wa-float js-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="26" height="26"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm0 23.1c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.2 1.2-4-.3-.4c-1.1-1.7-1.7-3.6-1.7-5.6C5.3 9.8 10.1 5 16 5s10.7 4.8 10.7 10.6S21.9 26.1 16 26.1zm5.9-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+  <button class="to-top" id="toTop" aria-label="Top">↑</button>
+
+  <!-- BOOKING MODAL -->
+  <div class="modal" id="bookModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <div id="bkForm">
+        <img src="img/logo.svg" alt="" class="bk__logo" />
+        <h3 class="bk__title" data-i18n="bk.title"></h3>
+        <div class="bk__pkg" id="bkPkg" hidden><span data-i18n="bk.package"></span>: <b id="bkPkgName"></b><button type="button" id="bkPkgX" aria-label="remove">×</button></div>
+        <form id="bookForm" novalidate>
+          <label class="f f--full"><span data-i18n="bk.room"></span><select id="bRoom"></select></label>
+          <label class="f"><span data-i18n="q.checkin"></span><input type="date" id="bIn" required /></label>
+          <label class="f"><span data-i18n="q.checkout"></span><input type="date" id="bOut" required /></label>
+          <label class="f"><span data-i18n="bk.adults"></span><input type="number" id="bAdults" min="1" max="6" value="2" /></label>
+          <label class="f"><span data-i18n="bk.kids"></span><input type="number" id="bKids" min="0" max="4" value="0" /></label>
+          <label class="f f--full"><span data-i18n="bk.name"></span><input type="text" id="bName" autocomplete="name" required /></label>
+          <label class="f"><span data-i18n="bk.phone"></span><input type="tel" id="bPhone" placeholder="+994" autocomplete="tel" required /></label>
+          <label class="f"><span data-i18n="bk.email"></span><input type="email" id="bEmail" autocomplete="email" /></label>
+          <div class="f f--full"><span data-i18n="bk.extras"></span><div class="extras" id="bExtras"></div></div>
+          <label class="f f--full"><span data-i18n="bk.comment"></span><textarea id="bComment" rows="2"></textarea></label>
+          <div class="bk__sum f--full">
+            <div><span data-i18n="bk.nights"></span><b id="sNights">0</b></div>
+            <div><span data-i18n="bk.total"></span><b id="sTotal">$0</b><small id="sAzn"></small></div>
+          </div>
+          <p class="bk__err f--full" id="bErr"></p>
+          <button class="btn btn--aqua f--full" type="submit" data-i18n="bk.submit"></button>
+        </form>
+      </div>
+      <div class="ok" id="bkOk" hidden>
+        <div class="ok__icon"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+        <h3 data-i18n="ok.title"></h3>
+        <p data-i18n="ok.text"></p>
+        <p class="ok__num"><span data-i18n="ok.num"></span>: <b id="okNum"></b></p>
+        <button class="btn btn--aqua" data-close data-i18n="ok.close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Close">×</button>
+    <button class="lightbox__nav lightbox__prev" aria-label="Prev">‹</button>
+    <img alt="" id="lbImg" />
+    <button class="lightbox__nav lightbox__next" aria-label="Next">›</button>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
